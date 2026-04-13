@@ -2,6 +2,10 @@ pipeline {
     agent {
         label 'dev'
     }
+    options {
+        timeout(time: 1, unit: 'SECONDS')
+        #disableConcurrentBuilds()
+    }
     stages {
         stage('Build') { 
             steps {
@@ -11,6 +15,7 @@ pipeline {
         stage('Test') { 
             steps {
                 sh 'echo This is Test'
+                sh 'sleep 10'
             }
         }
         stage('Deploy') { 
