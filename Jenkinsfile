@@ -3,19 +3,20 @@ pipeline {
         label 'dev'
     }
     options {
-        timeout(time: 1, unit: 'SECONDS')
-        
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
     }
     stages {
         stage('Build') { 
             steps {
                 sh 'echo This is Build'
+                sh 'sleep 5'
             }
         }
         stage('Test') { 
             steps {
                 sh 'echo This is Test'
-                sh 'sleep 10'
+                
             }
         }
         stage('Deploy') { 
